@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
 
 namespace RPG.Movement
 {
@@ -17,7 +18,6 @@ namespace RPG.Movement
         void Start()
         {
             nav = GetComponent<NavMeshAgent>();
-
         }
 
         // Update is called once per frame
@@ -39,7 +39,19 @@ namespace RPG.Movement
 
         public void MoveTo(Vector3 destination)
         {
+            nav.isStopped = false;
             nav.destination = destination;
+        }
+
+        public void Stop()
+        {
+            nav.isStopped = true;
+        }
+
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
         }
     }
 

@@ -8,7 +8,7 @@ using RPG.Movement;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float weaponRange = 2f;
 
@@ -22,10 +22,9 @@ namespace RPG.Combat
             {
                 GetComponent<RPG.Movement.Mover>().MoveTo(target.position);
             }
-
             else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
             }
         }
 

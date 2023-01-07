@@ -9,7 +9,7 @@ using RPG.Combat;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] Transform target;
         NavMeshAgent nav;
@@ -35,7 +35,6 @@ namespace RPG.Movement
             Vector3 velocity = nav.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             currentSpeed = localVelocity.z;
-
             GetComponent<Animator>().SetFloat("forwardSpeed", (currentSpeed));
         }
 
@@ -45,7 +44,7 @@ namespace RPG.Movement
             nav.destination = destination;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             nav.isStopped = true;
         }
@@ -53,9 +52,7 @@ namespace RPG.Movement
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            GetComponent<Fighter>().Cancel();
             MoveTo(destination);
         }
     }
-
 }

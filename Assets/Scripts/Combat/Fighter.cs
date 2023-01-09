@@ -12,6 +12,7 @@ namespace RPG.Combat
     {
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
+        [SerializeField] float weaponDamage = 5f;
 
         Transform target;
         float timeSinceLastAttack = 0;
@@ -64,7 +65,10 @@ namespace RPG.Combat
         //애니메이션 이벤트 처리
         void Hit()
         {
-            print("데미지 계산");
+            if(target != null)
+            {
+                target.GetComponent<Health>().TakeDamage(weaponDamage);
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace RPG.Core
 
         public void StartAction(IAction action)
         {
+            //현재 취하는 동작이 없으면 바로 입력받은 동작 수행,
+            //만약 다른 동작으로의 전환이 있다면 취소 이후 다음 동작 수행(ex 공격 모션 캔슬 후 바로 뒤돌아서 이동)
             if(action == currentAction) return;
             if (currentAction != null)
             {

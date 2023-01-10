@@ -16,13 +16,11 @@ namespace RPG.Movement
 
         float currentSpeed = 0f;
 
-        // Start is called before the first frame update
         void Start()
         {
             nav = GetComponent<NavMeshAgent>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             UpdateAnimator();
@@ -38,6 +36,7 @@ namespace RPG.Movement
             GetComponent<Animator>().SetFloat("forwardSpeed", (currentSpeed));
         }
 
+        //네비게이션 매쉬를 통한 움직임을 위해 네비매쉬의 목적지 설정
         public void MoveTo(Vector3 destination)
         {
             nav.isStopped = false;
@@ -49,6 +48,7 @@ namespace RPG.Movement
             nav.isStopped = true;
         }
 
+        //액션 스케쥴러에 이동 액션중이라고 알림
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);

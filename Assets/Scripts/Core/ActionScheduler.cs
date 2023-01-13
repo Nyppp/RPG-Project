@@ -22,5 +22,11 @@ namespace RPG.Core
             
             currentAction = action;
         }
+
+        //현재 어떤 동작을 수행중이든 취소 -> 사망 처리 후에 사용
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
+        }
     }
 }

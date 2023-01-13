@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat
+//체력 클래스는 모든 동작의 기본이 됨 -> core 네임스페이스에 배치
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
@@ -34,6 +35,7 @@ namespace RPG.Combat
 
             isDead = true;
             GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }

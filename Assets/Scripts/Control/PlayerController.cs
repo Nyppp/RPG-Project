@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using RPG.Combat;
+using RPG.Core;
 using RPG.Movement;
 
 //제어 처리에 관련한 네임스페이스 선언
@@ -12,10 +13,12 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
         Fighter fighter;
+        Health health;
         Mover move;
 
         private void Awake()
         {
+            health = GetComponent<Health>();
             fighter = GetComponent<Fighter>();
             move = GetComponent<Mover>();
         }
@@ -23,6 +26,8 @@ namespace RPG.Control
         //플레이어 입력에 대한 전반부 처리
         void Update()
         {
+            if (health.IsDead()) return;
+
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
         }
@@ -37,12 +42,16 @@ namespace RPG.Control
             {
                 //충돌 결과들을 모두 탐색하여 전투 가능한 오브젝트가 있으면, 전투 수행
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                if (target == null) continue;
 
-                if (fighter.CanAttack(target) != true) continue;
+                if (fighter.CanAttack(target.gameObject) != true)
+                {
+                    continue;
+                }
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    fighter.Attack(target);
+                    fighter.Attack(target.gameObject);
                     
                 }
                 return true;

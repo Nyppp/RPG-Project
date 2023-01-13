@@ -15,9 +15,14 @@ namespace RPG.Combat
         [SerializeField] float weaponDamage = 5f;
 
         Health target;
-        float timeSinceLastAttack = 0;
+        float timeSinceLastAttack = Mathf.Infinity;
 
         Mover mover;
+
+        public float GetAttackRange()
+        {
+            return weaponRange;
+        }
 
         private void Awake()
         {
@@ -28,7 +33,7 @@ namespace RPG.Combat
         {
             timeSinceLastAttack += Time.deltaTime;
 
-            //플레이어 공격 -> 공격 범위 밖에 있다면, 사거리에 올 떄 까지 쫓아감
+            //공격 -> 공격 범위 밖에 있다면, 사거리에 올 떄 까지 쫓아감
             if (target == null || target.IsDead()) return;
 
             if (!GetInRange())
@@ -67,7 +72,7 @@ namespace RPG.Combat
         }
 
         //액션스케쥴러에 공격 명령을 수행중이라고 알린 다음, 공격 타겟 설정
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             target = combatTarget.GetComponent<Health>();
             GetComponent<ActionScheduler>().StartAction(this);
@@ -88,12 +93,10 @@ namespace RPG.Combat
         }
 
         //타겟이 유효하며, 생존 상태인지 검사
-        public bool CanAttack(CombatTarget attackTarget)
+        public bool CanAttack(GameObject attackTarget)
         {
             if (attackTarget == null) return false;
-
             Health targetHealth = attackTarget.GetComponent<Health>();
-
             return targetHealth != null && targetHealth.IsDead() != true;
         }
 
@@ -104,6 +107,12 @@ namespace RPG.Combat
             {
                 target.TakeDamage(weaponDamage);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, weaponRange);
         }
     }
 }

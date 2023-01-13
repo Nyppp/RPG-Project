@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using RPG.Core;
+
 namespace RPG.Combat
 {
     //해당 클래스를 가진 오브젝트는 플레이어와 전투를 수행할 수 있는 오브젝트

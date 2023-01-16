@@ -49,7 +49,7 @@ namespace RPG.Control
                     continue;
                 }
 
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButton(1))
                 {
                     fighter.Attack(target.gameObject);
                     
@@ -58,6 +58,7 @@ namespace RPG.Control
             }
             return false;
         }
+        
 
         private bool InteractWithMovement()
         {

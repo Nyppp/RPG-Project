@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 5
+  suspicionTime: 5
 --- !u!1001 &1761185642850445792
 PrefabInstance:
   m_ObjectHideFlags: 0

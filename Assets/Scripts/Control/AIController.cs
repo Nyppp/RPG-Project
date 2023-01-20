@@ -13,14 +13,17 @@ namespace RPG.Control
 {
     public class AIController : MonoBehaviour
     {
-        //수정 가능한 변수(플레이어 인식범위, 경계 행동 시간)
+        //수정 가능한 변수(플레이어 인식범위)
         [SerializeField] float chaseDistance = 10f;
         [SerializeField] float suspicionTime = 3f;
 
-        //수정 가능한 변수(정찰 경로, 웨이포인트 변경 거리, 웨이포인트 대기 시간)
+        //수정 가능한 변수(정찰 경로 관련)
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointRange = 1f;
         [SerializeField] float waypointDelay = 3f;
+
+        [Range(0,1)]
+        [SerializeField] float patrolSpeedFaction = 0.2f;
 
         //컴포넌트 변수
         GameObject player;
@@ -92,7 +95,7 @@ namespace RPG.Control
 
             if(timeSinceArrivedPath > waypointDelay)
             {
-                mover.StartMoveAction(nextPosition);
+                mover.StartMoveAction(nextPosition, patrolSpeedFaction);
             }
         }
 

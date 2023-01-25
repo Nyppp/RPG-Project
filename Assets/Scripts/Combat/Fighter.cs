@@ -83,6 +83,7 @@ namespace RPG.Combat
         {
             target = null;
             TriggerStopAttack();
+            GetComponent<Mover>().Cancel();
         }
 
         //공격 취소에 대한 애니메이션 트리거 처리

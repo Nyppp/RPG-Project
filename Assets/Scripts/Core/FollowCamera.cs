@@ -20,11 +20,11 @@ namespace RPG.Core
         {
             if(Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(0, rotateSpeed*Time.deltaTime, 0);
+                transform.Rotate(0, rotateSpeed*Time.deltaTime, 0, Space.World);
             }
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(0, -rotateSpeed*Time.deltaTime, 0);
+                transform.Rotate(0, -rotateSpeed*Time.deltaTime, 0, Space.World);
             }
         }
     }

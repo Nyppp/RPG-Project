@@ -82,6 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 55849403316266192}
   rotateSpeed: 50
+  zoomSpeed: 150
+  maxZoom: 20
+  minZoom: 10
 --- !u!1 &55849404329044152
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 10
+  m_CameraDistance: 15
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

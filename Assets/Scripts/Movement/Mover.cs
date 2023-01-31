@@ -6,10 +6,12 @@ using UnityEngine.AI;
 
 using RPG.Core;
 using RPG.Combat;
+using RPG.Saving;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    //ISavable -> 세이브 로드 시스템에 저장 될 수 있는 인터페이스로 등록
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] Transform target;
         [SerializeField] float maxSpeed = 6f;
@@ -60,6 +62,22 @@ namespace RPG.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination, fraction);
+        }
+
+        //현재 위치를 저장
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        //저장된 위치를 불러옴
+        public void RestoreState(object state)
+        {
+            SerializableVector3 position = (SerializableVector3)state;
+
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 }

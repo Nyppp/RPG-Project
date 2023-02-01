@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.SceneManagement
 {
@@ -72,7 +73,15 @@ namespace RPG.SceneManagement
 
             //비동기 씬 로드가 마무리 될 때 까지 스레드에서 진행중인 모든 작업 보류 + 페이드 인, 아웃으로 씬 로딩 간 화면을 가림
             yield return fader.FadeOut(fadeTime);
+
+            //현재 레벨의 상태를 저장(체력, 적의 상태)
+            SavingWraper wrapper = FindObjectOfType<SavingWraper>();
+            wrapper.Save();
+            
             yield return SceneManager.LoadSceneAsync(currentSceneIdx);
+
+            //이동 후 레벨의 상태를 불러옴
+            wrapper.Load();
 
             //씬이 로드된 이후 후처리 작업(다른 맵에서의 플레이어 위치 조정)
             Portal otherPortal = GetOtherPortal();

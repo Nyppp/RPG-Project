@@ -64,19 +64,47 @@ namespace RPG.Movement
             MoveTo(destination, fraction);
         }
 
+        //구조체를 사용한 매개변수 캡처
+        [System.Serializable]
+        struct MoverSaveData
+        {
+            public SerializableVector3 position;
+            public SerializableVector3 rotation;
+        }
+
         //현재 위치를 저장
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            //딕셔너리 사용한 매개변수 전달
+            /*Dictionary<string, object> data = new Dictionary<string, object>();
+            data["position"] = new SerializableVector3(transform.position);
+            data["rotation"] = new SerializableVector3(transform.eulerAngles);
+            return data;*/
+
+            //구조체를 사용한 매개변수 전달
+            MoverSaveData data = new MoverSaveData();
+            data.position = new SerializableVector3(transform.position);
+            data.rotation = new SerializableVector3(transform.eulerAngles);
+            return data;
+            
         }
 
         //저장된 위치를 불러옴
         public void RestoreState(object state)
         {
-            SerializableVector3 position = (SerializableVector3)state;
+            //딕셔너리 사용한 매개변수 전달
+            /*Dictionary<string, object> data = (Dictionary<string, object>)state;
 
             GetComponent<NavMeshAgent>().enabled = false;
-            transform.position = position.ToVector();
+            transform.position = ((SerializableVector3)data["position"]).ToVector();
+            transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;*/
+
+            //구조체를 사용한 매개변수 전달
+            MoverSaveData data = (MoverSaveData)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = data.position.ToVector();
+            transform.eulerAngles = data.rotation.ToVector();
             GetComponent<NavMeshAgent>().enabled = true;
         }
     }

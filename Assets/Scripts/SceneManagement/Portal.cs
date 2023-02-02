@@ -87,6 +87,8 @@ namespace RPG.SceneManagement
             Portal otherPortal = GetOtherPortal();
             LocatePlayerToSpawnPoint(otherPortal);
 
+            wrapper.Save();
+
             //조정이 끝나면 페이드인으로 화면을 보여준다.
             yield return new WaitForSeconds(waitTime);
             yield return fader.FadeIn(fadeTime);
@@ -103,8 +105,10 @@ namespace RPG.SceneManagement
         private void LocatePlayerToSpawnPoint(Portal otherPortal)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
+            player.GetComponent<NavMeshAgent>().enabled = false;
+            player.transform.position = otherPortal.spawnPoint.position;
             player.transform.rotation = otherPortal.spawnPoint.rotation;
+            player.GetComponent<NavMeshAgent>().enabled = true;
         }
 
         private Portal GetOtherPortal()

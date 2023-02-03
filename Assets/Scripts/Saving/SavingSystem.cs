@@ -47,6 +47,8 @@ namespace RPG.Saving
             {
                 return new Dictionary<string, object>();
             }
+
+            //using을 문장에서 사용하면, 해당 블럭을 빠져나올 때 문장에서 선언된 파라미터가 dispose된다(자원 할당 해제)
             using (FileStream stream = File.Open(path, FileMode.Open))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

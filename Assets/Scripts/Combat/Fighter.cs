@@ -13,6 +13,9 @@ namespace RPG.Combat
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] AnimatorOverrideController weaponOverride = null;
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
@@ -27,6 +30,7 @@ namespace RPG.Combat
         private void Awake()
         {
             mover = GetComponent<Mover>();
+            SpawnWeapon();
         }
 
         private void Update()
@@ -50,7 +54,7 @@ namespace RPG.Combat
         //공격 딜레이 계산, 애니메이션 트리거 동작, 방향 전환
         private void AttackBehaviour()
         {
-            if(timeSinceLastAttack > timeBetweenAttacks)
+            if (timeSinceLastAttack > timeBetweenAttacks)
             {
                 TriggerAttack();
                 timeSinceLastAttack = 0;
@@ -104,7 +108,7 @@ namespace RPG.Combat
         //애니메이션 이벤트 처리
         void Hit()
         {
-            if(target != null)
+            if (target != null)
             {
                 target.TakeDamage(weaponDamage);
             }
@@ -114,6 +118,18 @@ namespace RPG.Combat
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, weaponRange);
+        }
+
+        private void SpawnWeapon()
+        {
+            if(weaponPrefab == null)
+            {
+                return;
+            }
+
+            Instantiate(weaponPrefab, handTransform);
+            Animator animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = weaponOverride;
         }
     }
 }

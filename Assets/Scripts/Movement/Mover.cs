@@ -102,6 +102,7 @@ namespace RPG.Movement
 
             //구조체를 사용한 매개변수 전달
             MoverSaveData data = (MoverSaveData)state;
+
             GetComponent<NavMeshAgent>().enabled = false;
             transform.position = data.position.ToVector();
             transform.eulerAngles = data.rotation.ToVector();

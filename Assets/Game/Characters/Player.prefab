@@ -2262,6 +2262,18 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 7933111413945341720, guid: 1cba3dc668ecbd34cbcd3ef523c775a2, type: 3}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 3087984329022057215}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: weaponOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: ca6e24b6213291e4391285167a3c6588, type: 2}
     - target: {fileID: 3212225648410337858, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
       propertyPath: m_Name
       value: Player

@@ -87,6 +87,7 @@ namespace RPG.SceneManagement
             Portal otherPortal = GetOtherPortal();
             LocatePlayerToSpawnPoint(otherPortal);
 
+            //씬 이동 후의 위치를 다시 저장(체크포인트 방식)
             wrapper.Save();
 
             //조정이 끝나면 페이드인으로 화면을 보여준다.
@@ -105,6 +106,7 @@ namespace RPG.SceneManagement
         private void LocatePlayerToSpawnPoint(Portal otherPortal)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
+
             player.GetComponent<NavMeshAgent>().enabled = false;
             player.transform.position = otherPortal.spawnPoint.position;
             player.transform.rotation = otherPortal.spawnPoint.rotation;

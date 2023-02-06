@@ -2259,6 +2259,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 64d26a56f6c272f429afb36b173c0d15, type: 2}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
@@ -2266,6 +2270,10 @@ PrefabInstance:
       propertyPath: weaponPrefab
       value: 
       objectReference: {fileID: 7933111413945341720, guid: 1cba3dc668ecbd34cbcd3ef523c775a2, type: 3}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 18c274bbd5eb373479934a326b79425b, type: 2}
     - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
       propertyPath: handTransform
       value: 

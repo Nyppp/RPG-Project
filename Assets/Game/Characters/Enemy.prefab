@@ -43,6 +43,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointRange: 1
   waypointDelay: 1
+  patrolSpeedFaction: 0.4
 --- !u!1001 &1761185642850445792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &1761185642850033390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 1761185642850445792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3368778690523936532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,10 +117,26 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1330292499, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 18c274bbd5eb373479934a326b79425b, type: 2}
     - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 18c274bbd5eb373479934a326b79425b, type: 2}
+    - target: {fileID: 2280635983108242607, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 1761185642850033390}
     - target: {fileID: 3212225648410337858, guid: 1b18c19672073794bb7fcec45ec5e5b9, type: 3}
       propertyPath: m_Name
       value: Enemy

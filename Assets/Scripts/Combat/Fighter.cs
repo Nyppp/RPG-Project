@@ -10,27 +10,21 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] float weaponDamage = 5f;
-        [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] AnimatorOverrideController weaponOverride = null;
+        [SerializeField] Weapon defaultWeapon = null;
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
+        Weapon currentWeapon = null;
 
         Mover mover;
 
-        public float GetAttackRange()
-        {
-            return weaponRange;
-        }
-
         private void Awake()
         {
+            currentWeapon = defaultWeapon;
             mover = GetComponent<Mover>();
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -72,7 +66,7 @@ namespace RPG.Combat
         //타겟과 거리 계산
         private bool GetInRange()
         {
-            return Vector3.Distance(target.transform.position, transform.position) <= weaponRange;
+            return Vector3.Distance(target.transform.position, transform.position) <= currentWeapon.WeaponRange;
         }
 
         //액션스케쥴러에 공격 명령을 수행중이라고 알린 다음, 공격 타겟 설정
@@ -110,26 +104,25 @@ namespace RPG.Combat
         {
             if (target != null)
             {
-                target.TakeDamage(weaponDamage);
+                target.TakeDamage(currentWeapon.WeaponDamage);
             }
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, weaponRange);
+            if (Application.isPlaying)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, currentWeapon.WeaponRange);
+            }
         }
 
-        private void SpawnWeapon()
+        //무기 픽업(장비)
+        public void EquipWeapon(Weapon weapon)
         {
-            if(weaponPrefab == null)
-            {
-                return;
-            }
-
-            Instantiate(weaponPrefab, handTransform);
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = weaponOverride;
+            weapon.Spawn(handTransform, animator);
         }
     }
 }

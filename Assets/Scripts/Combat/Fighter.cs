@@ -11,12 +11,13 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] Weapon currentWeapon = null;
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
-        Weapon currentWeapon = null;
 
         Mover mover;
 
@@ -99,13 +100,28 @@ namespace RPG.Combat
             return targetHealth != null && targetHealth.IsDead() != true;
         }
 
-        //애니메이션 이벤트 처리
+        //애니메이션 이벤트 처리(근접 공격)
         void Hit()
         {
             if (target != null)
             {
+                return;
+            }
+
+            if(currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
+            else
+            {
                 target.TakeDamage(currentWeapon.WeaponDamage);
             }
+        }
+
+        //원거리 공격
+        void Shoot()
+        {
+            Hit();
         }
 
         private void OnDrawGizmos()
@@ -122,7 +138,7 @@ namespace RPG.Combat
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
     }
 }

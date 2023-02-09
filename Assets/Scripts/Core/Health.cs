@@ -18,7 +18,6 @@ namespace RPG.Core
             return isDead;
         }
 
-
         //데미지 계산
         public void TakeDamage(float damage)
         {
@@ -55,7 +54,5 @@ namespace RPG.Core
                 Dead();
             }
         }
-
-
     }
 }

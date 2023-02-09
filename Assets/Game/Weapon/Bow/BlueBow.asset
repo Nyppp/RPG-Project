@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c28f9818b014f23459bcf6909e05ade3, type: 3}
-  m_Name: Bow
+  m_Name: BlueBow
   m_EditorClassIdentifier: 
   weaponRange: 10
   weaponDamage: 5

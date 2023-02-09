@@ -103,7 +103,7 @@ namespace RPG.Combat
         //애니메이션 이벤트 처리(근접 공격)
         void Hit()
         {
-            if (target != null)
+            if(target == null)
             {
                 return;
             }

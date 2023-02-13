@@ -1,6 +1,7 @@
 # RPG Project
 Unity RPG 제작 프로젝트
 - RPG 게임에서 자주 쓰이는 기능, 요소들을 구현한 프로젝트입니다.
+- Jira를 사용한 이슈 트래킹도 사용 중 입니다.
 
 ### 개발 과정 영상(기능 시연)
 https://www.youtube.com/playlist?list=PLjP_cfO4-g9kbf5_T-UtaKqgQUILsO_5E

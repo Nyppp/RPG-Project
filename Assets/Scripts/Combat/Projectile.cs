@@ -21,7 +21,7 @@ namespace RPG.Combat
         void Update()
         {
             if (target == null) return;
-            if (isHoming)
+            if (isHoming && target.IsDead())
             {
                 transform.LookAt(GetAimLocation());
             }

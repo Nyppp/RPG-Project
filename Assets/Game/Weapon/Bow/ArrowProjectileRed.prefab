@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 53479040171630197, guid: 29c4792abceda504e96306fc74b74d82, type: 3}
+      propertyPath: isHoming
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1075554107458408330, guid: 29c4792abceda504e96306fc74b74d82, type: 3}
       propertyPath: m_Name
       value: ArrowProjectileRed

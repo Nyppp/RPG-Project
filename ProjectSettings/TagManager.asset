@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Portal
+  - Mesh
   layers:
   - Default
   - TransparentFX

@@ -57,6 +57,11 @@ namespace RPG.Combat
                     Destroy(this.gameObject);
                 }
             }
+
+            if(other.gameObject.tag == "Mesh" || other.gameObject.tag == "Terrain")
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

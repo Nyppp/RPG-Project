@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c28f9818b014f23459bcf6909e05ade3, type: 3}
-  m_Name: BlueBow
+  m_Name: Fireball
   m_EditorClassIdentifier: 
   weaponRange: 10
-  weaponDamage: 5
-  projectile: {fileID: 8498900147245978504, guid: 59c9805499cf07d43a5281abb88213e6, type: 3}
-  weaponPrefab: {fileID: 4317178257817655964, guid: c4c3667986940f54bb8a74be1c55c898, type: 3}
-  animatorOverride: {fileID: 22100000, guid: 01a17fe2d2458174ba1371aff3020823, type: 2}
-  isRightHanded: 0
+  weaponDamage: 10
+  projectile: {fileID: 53479040171630197, guid: 433400c4880881748bb94161ead4f1f9, type: 3}
+  weaponPrefab: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 044c34cc7b86e724f8e63a0f9e01932b, type: 2}
+  isRightHanded: 1

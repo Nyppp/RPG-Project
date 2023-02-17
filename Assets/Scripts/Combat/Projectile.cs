@@ -11,6 +11,10 @@ namespace RPG.Combat
         [SerializeField] float speed = 1;
         [SerializeField] bool isHoming = false;
         [SerializeField] GameObject hitEffect = null;
+        [SerializeField] float maxLifeTime = 10f;
+        [SerializeField] GameObject[] destroyOnHit = null;
+        [SerializeField] float lifeAfterImpact = 2;
+
         Health target = null;
         float damage = 0f;
 
@@ -34,6 +38,8 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(this.gameObject, maxLifeTime);
         }
 
         Vector3 GetAimLocation()
@@ -50,22 +56,26 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.GetComponent<Health>() == target)
+            if (target.IsDead()) return;
+            if (other.GetComponent<Health>() != target) return;
+
+            target.TakeDamage(damage);
+
+            speed = 0;
+
+            if (hitEffect != null)
             {
-                if (target.IsDead() != true)
-                {
-                    target.TakeDamage(damage);
-
-                    if(hitEffect != null)
-                    {
-                        Instantiate(hitEffect, GetAimLocation(), transform.rotation);
-                    }
-
-                    Destroy(this.gameObject);
-                }
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 
-            if(other.gameObject.tag == "Mesh" || other.gameObject.tag == "Terrain")
+            foreach (GameObject toDestroy in destroyOnHit)
+            {
+                Destroy(toDestroy);
+            }
+
+            Destroy(this.gameObject, lifeAfterImpact);
+
+            if (other.gameObject.tag == "Mesh" || other.gameObject.tag == "Terrain")
             {
                 Destroy(this.gameObject);
             }

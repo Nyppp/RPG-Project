@@ -40,6 +40,7 @@ namespace RPG.Combat
         {
             DestroyOldWeapon(rightHand, leftHand);
 
+            //무기 프리펩 교체
             if(weaponPrefab != null)
             {
                 Transform handTransform = GetHandTransform(rightHand, leftHand);
@@ -47,9 +48,19 @@ namespace RPG.Combat
                 weapon.name = weaponName;
             }
 
+            //주운 무기가 기본 공격모션을 쓰는지 구분하기 위함
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+
+            //전용 모션이 있다면 그 모션으로 교체
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
+            }
+
+            //기본 모션을 사용한다면, 해당 무기의 애니메이션을 사용
+            else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
             }
         }
 

@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 using RPG.Core;
 using RPG.Movement;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -26,8 +27,11 @@ namespace RPG.Combat
         {
             currentWeapon = defaultWeapon;
             mover = GetComponent<Mover>();
-            Weapon weapon = Resources.Load<Weapon>(defaultWeaponName); 
-            EquipWeapon(weapon);
+
+            if(currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
         }
 
         private void Update()
@@ -141,6 +145,25 @@ namespace RPG.Combat
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        }
+
+        //현재 장착한 무기에 대해 세이브 & 로드
+        public object CaptureState()
+        {
+            if (currentWeapon != null)
+            {
+                return currentWeapon.name;
+            }
+
+            return null;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            //리소스를 통해 직접 프리펩 연결이 아닌 파일 이름을 통해 찾음
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(weapon);
         }
     }
 }

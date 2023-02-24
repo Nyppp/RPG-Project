@@ -6,6 +6,7 @@ using UnityEngine;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Resources;
 
 //제어 처리에 관련한 네임스페이스 선언
 namespace RPG.Control

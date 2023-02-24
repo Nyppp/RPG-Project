@@ -7,6 +7,7 @@ using UnityEditor;
 using RPG.Combat;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Resources;
 using System;
 
 namespace RPG.Control

@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Core;
 
-//체력 클래스는 모든 동작의 기본이 됨 -> core 네임스페이스에 배치
-namespace RPG.Core
+
+namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float health = 100f;
         bool isDead = false;
+
+        private void Start()
+        {
+            health = GetComponent<BaseStats>().GetHealth();
+        }
 
         //사망 체크
         public bool IsDead()

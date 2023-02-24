@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Saving;
+using RPG.Resources;
 
 namespace RPG.Combat
 {
@@ -162,7 +163,7 @@ namespace RPG.Combat
         {
             string weaponName = (string)state;
             //리소스를 통해 직접 프리펩 연결이 아닌 파일 이름을 통해 찾음
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }

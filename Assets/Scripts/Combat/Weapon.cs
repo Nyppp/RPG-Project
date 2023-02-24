@@ -2,6 +2,8 @@ using UnityEngine;
 using RPG.Core;
 using System;
 
+using RPG.Resources;
+
 namespace RPG.Combat
 {
     //무기 데이터를 스크립터블 오브젝트로 저장

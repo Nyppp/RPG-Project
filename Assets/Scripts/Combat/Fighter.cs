@@ -20,6 +20,11 @@ namespace RPG.Combat
         [SerializeField] string defaultWeaponName = "Unarmed";
 
         Health target;
+        public Health GetTarget()
+        {
+            return target;
+        }
+
         float timeSinceLastAttack = Mathf.Infinity;
 
         Mover mover;
@@ -147,6 +152,7 @@ namespace RPG.Combat
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
+
 
         //현재 장착한 무기에 대해 세이브 & 로드
         public object CaptureState()

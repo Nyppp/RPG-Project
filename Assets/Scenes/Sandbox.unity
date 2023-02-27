@@ -8693,6 +8693,10 @@ PrefabInstance:
       propertyPath: defaultWeaponName
       value: Fireball
       objectReference: {fileID: 0}
+    - target: {fileID: 5735107026642377726, guid: c4a6533412e51514db5ab6be8e4ee686, type: 3}
+      propertyPath: startingLevel
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a6533412e51514db5ab6be8e4ee686, type: 3}
 --- !u!1 &2626731800462317895

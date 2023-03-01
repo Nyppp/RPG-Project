@@ -10,7 +10,11 @@ namespace RPG.Resources
 {
     public class HealthDisplay : MonoBehaviour
     {
+        //플레이어 체력바와 퍼센트 수치 표시
+        [SerializeField] Slider playerhealthBar;
         [SerializeField] Text playerhealthText;
+
+        //타겟(몬스터) 체력 표시
         [SerializeField] Text enemyhealthText;
 
         Health health;
@@ -35,6 +39,8 @@ namespace RPG.Resources
         void SetPlayerHealthPercentage()
         {
             playerhealthPercaentage = health.GetPercentage();
+            playerhealthBar.value = playerhealthPercaentage;
+
             playerhealthText.text = String.Format("{0:0}%", playerhealthPercaentage);
         }
 

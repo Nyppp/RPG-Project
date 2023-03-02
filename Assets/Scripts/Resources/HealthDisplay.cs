@@ -15,6 +15,7 @@ namespace RPG.Resources
         [SerializeField] Text playerhealthText;
 
         //타겟(몬스터) 체력 표시
+        [SerializeField] Slider enemyhealthBar;
         [SerializeField] Text enemyhealthText;
 
         Health health;
@@ -46,13 +47,17 @@ namespace RPG.Resources
 
         void SetEnemyHealthPercentage()
         {
-            if (fighter.GetTarget() == null)
+            if (fighter.GetTarget() == null || fighter.GetTarget().IsDead())
             {
-                enemyhealthText.text = "NONE";
+                enemyhealthBar.gameObject.SetActive(false);
             }
             else
             {
+                enemyhealthBar.gameObject.SetActive(true);
+
                 enemyhealthPercentage = fighter.GetTarget().GetPercentage();
+                enemyhealthBar.value = enemyhealthPercentage;
+
                 enemyhealthText.text = String.Format("{0:0}%", enemyhealthPercentage);
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
-
+using System;
 
 namespace RPG.Resources
 {
@@ -28,7 +28,7 @@ namespace RPG.Resources
         }
 
         //데미지 계산
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             health = Mathf.Max(health - damage, 0);
             print("체력 : " + health);
@@ -36,13 +36,16 @@ namespace RPG.Resources
             if (health <= 0)
             {
                 Dead();
+                AwardExperience(instigator);
             }
         }
 
+        //체력 퍼센트 반환
         public float GetPercentage()
         {
             return (health / maxHealth) * 100;
         }
+
 
         //사망 처리
         void Dead()
@@ -54,6 +57,16 @@ namespace RPG.Resources
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
+        //경험치 획득
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience exprience = instigator.GetComponent<Experience>();
+            if (exprience == null) return;
+
+            exprience.GainExp(GetComponent<BaseStats>().GetExp());
+        }
+
+        //세이브 로드
         public object CaptureState()
         {
             return health;

@@ -24,7 +24,6 @@ namespace RPG.Resources
         float playerhealthPercaentage;
         float enemyhealthPercentage;
 
-
         private void Awake()
         {
             health = GameObject.FindWithTag("Player").GetComponent<Health>();

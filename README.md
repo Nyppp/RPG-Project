@@ -14,3 +14,4 @@ https://remake9737.atlassian.net/jira/software/projects/REM/boards/1
 - <a href="https://github.com/Nyppp/RPG-Project/blob/main/Assets/Scripts/Combat/Fighter.cs">캐릭터 공격</a>
 - <a href="https://github.com/Nyppp/RPG-Project/blob/main/Assets/Scripts/Control/AIController.cs">몬스터 AI</a>
 - <a href="https://github.com/Nyppp/RPG-Project/blob/main/Assets/Scripts/SceneManagement/Portal.cs">맵 전환(포탈)</a>
+- <a href="https://github.com/Nyppp/RPG-Project/tree/main/Assets/Scripts/Stats">데이터 테이블(YAML)</a>

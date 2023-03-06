@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  isHoming: 1
+  isHoming: 0
   hitEffect: {fileID: 0}
   maxLifeTime: 10
   destroyOnHit:

@@ -17,7 +17,7 @@ namespace RPG.Resources
 
         private void Start()
         {
-            health = GetComponent<BaseStats>().GetHealth();
+            health = GetComponent<BaseStats>().GetStat(Stat.Health);
             maxHealth = health;
         }
 
@@ -43,7 +43,7 @@ namespace RPG.Resources
         //체력 퍼센트 반환
         public float GetPercentage()
         {
-            return (health / maxHealth) * 100;
+            return (health / GetComponent<BaseStats>().GetStat(Stat.Health)) * 100;
         }
 
 
@@ -63,7 +63,7 @@ namespace RPG.Resources
             Experience exprience = instigator.GetComponent<Experience>();
             if (exprience == null) return;
 
-            exprience.GainExp(GetComponent<BaseStats>().GetExp());
+            exprience.GainExp(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         //세이브 로드

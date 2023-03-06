@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 167847509034538326, guid: 1b35df4ae22158746ae5eaa94e2276ee, type: 3}
       propertyPath: m_Name
-      value: Archer (1)
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 1761185642845047484, guid: 1b35df4ae22158746ae5eaa94e2276ee, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: a1a56f85bf50be84bb881a2aee334e96, type: 2}
+    - target: {fileID: 5733762234009095035, guid: 1b35df4ae22158746ae5eaa94e2276ee, type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6432359890802542735, guid: 1b35df4ae22158746ae5eaa94e2276ee, type: 3}
       propertyPath: uniqueIdentifier
       value: 7e72f4f3-5b7d-4243-b1ef-77d837c9bf62

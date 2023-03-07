@@ -26,8 +26,11 @@ namespace RPG.Resources
 
         private void Awake()
         {
-            health = GameObject.FindWithTag("Player").GetComponent<Health>();
-            fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
+            GameObject player = GameObject.FindWithTag("Player");
+
+            health = player.GetComponent<Health>();
+            fighter = player.GetComponent<Fighter>();
+            
         }
 
         private void Update()
@@ -60,5 +63,6 @@ namespace RPG.Resources
                 enemyhealthText.text = String.Format("{0:0}%", enemyhealthPercentage);
             }
         }
+
     }
 }
